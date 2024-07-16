@@ -1,7 +1,8 @@
 package com.min32.blogforevery.domain.users.controller;
 
 
-import com.min32.blogforevery.domain.users.service.dto.controllerDTO.Register;
+import com.min32.blogforevery.domain.users.controller.controllerDTO.DeleteUser;
+import com.min32.blogforevery.domain.users.controller.controllerDTO.Register;
 import com.min32.blogforevery.domain.users.service.dto.serviceDTO.*;
 import com.min32.blogforevery.domain.users.service.UserService;
 import com.min32.blogforevery.util.UserInfo;
@@ -35,8 +36,8 @@ public class UsersController {
     }
 
     @DeleteMapping("")
-    public ResponseEntity<Void> deleteUser (@UserInfo UsersInfo usersInfo) {
-        userService.deleteUser(usersInfo.getId());
+    public ResponseEntity<Void> deleteUser (@UserInfo UsersInfo usersInfo, @Valid @RequestBody DeleteUser deleteUser) {
+        userService.deleteUser(deleteUser.toServiceRequest(), usersInfo.getId());
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
@@ -47,7 +48,7 @@ public class UsersController {
 
     @PutMapping("/password")
     public ResponseEntity<Void> updateUserPassword (@Valid @RequestBody Password password,
-                                                    @UserInfo UsersInfo usersInfo) throws NoSuchAlgorithmException, IllegalAccessException {
+                                                    @UserInfo UsersInfo usersInfo) {
         userService.updateUserPassword(password, usersInfo.getId());
         return ResponseEntity.status(HttpStatus.OK).build();
     }

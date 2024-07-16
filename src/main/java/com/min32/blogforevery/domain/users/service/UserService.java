@@ -24,7 +24,7 @@ public class UserService {
     private final JwtProvider jwtProvider;
 
     // 저장
-    public void registerUser (RegisterService registerService) {
+    public void registerUser(RegisterService registerService) {
 
         Users user = Users.builder()
                 .email(registerService.email())
@@ -37,7 +37,7 @@ public class UserService {
     }
 
     // 단건 조회
-    public UserResponse getUserInfo (Long id){
+    public UserResponse getUserInfo(Long id) {
         Users user = findBy(id);
 
         return UserResponse.of(user);
@@ -101,11 +101,11 @@ public class UserService {
 
     private void verifyingPassword(String originPassword, Users user) {
         boolean verified = passwordEncoder.matches(originPassword, user.getPassword());
-        isNotMathchedPassword(verified);
+        isNotMatchedPassword(verified);
     }
 
-    private static void isNotMathchedPassword(boolean verified) {
-        if(!verified) {
+    private static void isNotMatchedPassword(boolean verified) {
+        if (!verified) {
             throw new UserException(ErrorCode.NOT_MATCH_PASSWORD);
         }
     }
