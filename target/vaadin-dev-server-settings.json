@@ -1,0 +1,17 @@
+{
+  "frontendFolder": "/Users/kangminseung/Desktop/blogForEvery/./src/main/frontend",
+  "themeFolder": "themes",
+  "themeResourceFolder": "/Users/kangminseung/Desktop/blogForEvery/./src/main/frontend/generated/jar-resources",
+  "staticOutput": "/Users/kangminseung/Desktop/blogForEvery/target/classes/META-INF/VAADIN/webapp/VAADIN/static",
+  "generatedFolder": "generated",
+  "statsOutput": "/Users/kangminseung/Desktop/blogForEvery/target/classes/META-INF/VAADIN/config",
+  "frontendBundleOutput": "/Users/kangminseung/Desktop/blogForEvery/target/classes/META-INF/VAADIN/webapp",
+  "devBundleOutput": "/Users/kangminseung/Desktop/blogForEvery/target/dev-bundle/webapp",
+  "devBundleStatsOutput": "/Users/kangminseung/Desktop/blogForEvery/target/dev-bundle/config",
+  "jarResourcesFolder": "/Users/kangminseung/Desktop/blogForEvery/./src/main/frontend/generated/jar-resources",
+  "themeName": "",
+  "clientServiceWorkerSource": "/Users/kangminseung/Desktop/blogForEvery/target/sw.ts",
+  "pwaEnabled": false,
+  "offlineEnabled": false,
+  "offlinePath": "'offline.html'"
+}
