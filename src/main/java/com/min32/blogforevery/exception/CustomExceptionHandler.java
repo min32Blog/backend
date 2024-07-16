@@ -11,4 +11,9 @@ public class CustomExceptionHandler {
     protected ResponseEntity<ErrorResponseEntity> handleCustomException(S3Exception e){
         return ErrorResponseEntity.toResponseEntity(e.getErrorCode());
     }
+
+    @ExceptionHandler(UserException.class)
+    protected ResponseEntity<ErrorResponseEntity> handleCustomException(UserException e){
+        return ErrorResponseEntity.toResponseEntity(e.getErrorCode());
+    }
 }
