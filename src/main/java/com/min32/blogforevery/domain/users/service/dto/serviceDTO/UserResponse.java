@@ -1,5 +1,6 @@
 package com.min32.blogforevery.domain.users.service.dto.serviceDTO;
 
+import com.min32.blogforevery.domain.users.entity.Gender;
 import com.min32.blogforevery.domain.users.entity.Users;
 import lombok.Builder;
 
@@ -7,7 +8,7 @@ import lombok.Builder;
 public record UserResponse(
       String nickname,
       String phone,
-      boolean gender
+      Gender gender
 ){
 
     public static UserResponse of (Users user) {

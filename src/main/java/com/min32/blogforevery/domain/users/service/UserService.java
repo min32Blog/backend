@@ -1,5 +1,6 @@
 package com.min32.blogforevery.domain.users.service;
 
+import com.min32.blogforevery.domain.users.entity.Gender;
 import com.min32.blogforevery.domain.users.entity.Users;
 import com.min32.blogforevery.domain.users.repository.UsersRepository;
 import com.min32.blogforevery.domain.users.service.dto.serviceDTO.*;
@@ -39,7 +40,6 @@ public class UserService {
     // 단건 조회
     public UserResponse getUserInfo(Long id) {
         Users user = findBy(id);
-
         return UserResponse.of(user);
     }
 

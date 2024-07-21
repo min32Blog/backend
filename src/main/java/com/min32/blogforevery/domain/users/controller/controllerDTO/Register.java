@@ -1,5 +1,6 @@
 package com.min32.blogforevery.domain.users.controller.controllerDTO;
 
+import com.min32.blogforevery.domain.users.entity.Gender;
 import com.min32.blogforevery.domain.users.service.dto.serviceDTO.RegisterService;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -25,7 +26,7 @@ public record Register(
         String password,
 
         @NotNull(message = "성별은 필수 입력 값입니다.")
-        boolean gender
+        Gender gender
 ) {
 
     public RegisterService toServiceRequest() {

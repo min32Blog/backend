@@ -32,7 +32,8 @@ public class Users extends BaseTimeEntity {
     @Column(length = 13, unique = true)
     private String phoneNumber;
 
-    private Boolean gender;
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
 
     private String profileImage;
 
@@ -43,9 +44,9 @@ public class Users extends BaseTimeEntity {
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private House house;
 
-    @Builder(toBuilder = true)
-    public Users(Long id, String name, String email, String password, String phoneNumber, Boolean gender, String profileImage, LocalDate isDelete, String portfolio, House house) {
-        this.id = id;
+
+    @Builder
+    public Users(String name, String email, String password, String phoneNumber, Gender gender, String profileImage, LocalDate isDelete, String portfolio, House house) {
         this.name = name;
         this.email = email;
         this.password = password;

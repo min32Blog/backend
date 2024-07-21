@@ -30,17 +30,6 @@ public class UsersController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @GetMapping("/info")
-    public ResponseEntity<UserResponse> userInfo (@UserInfo UsersInfo usersInfo) {
-        return ResponseEntity.status(HttpStatus.OK).body(userService.getUserInfo(usersInfo.getId()));
-    }
-
-    @DeleteMapping("")
-    public ResponseEntity<Void> deleteUser (@UserInfo UsersInfo usersInfo, @Valid @RequestBody DeleteUser deleteUser) {
-        userService.deleteUser(deleteUser.toServiceRequest(), usersInfo.getId());
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-    }
-
     @PostMapping("/login")
     public ResponseEntity<AccessToken> login (@Valid @RequestBody LoginInfo loginInfo) {
         return ResponseEntity.status(HttpStatus.OK).body(userService.login(loginInfo));
@@ -58,5 +47,20 @@ public class UsersController {
                                                @UserInfo UsersInfo usersInfo) {
         userService.updateUserInfo(userInfo, usersInfo.getId());
         return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @DeleteMapping("")
+    public ResponseEntity<Void> deleteUser (@UserInfo UsersInfo usersInfo, @Valid @RequestBody DeleteUser deleteUser) {
+        userService.deleteUser(deleteUser.toServiceRequest(), usersInfo.getId());
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @GetMapping("/info")
+    public ResponseEntity<UserResponse> userInfo (@UserInfo UsersInfo usersInfo, @RequestParam(required = false) Long userId) {
+        if(userId == null) {
+            return ResponseEntity.status(HttpStatus.OK).body(userService.getUserInfo(usersInfo.getId()));
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(userService.getUserInfo(userId));
     }
 }
